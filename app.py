@@ -13,7 +13,7 @@ CORS(app)
 @app.before_request
 def load_model():
     global model
-    model = joblib.load(open('fakenewsmei12.pkl', 'rb'))
+    model = joblib.load(open('fakenewsmei152.pkl', 'rb'))
 
 @app.route('/')
 def index():
