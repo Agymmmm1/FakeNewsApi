@@ -3,7 +3,7 @@ from flask_cors import CORS
 import joblib
 from bs4 import BeautifulSoup
 import requests
-from process import process_text as pt
+from proses.process import process_text as pt
 import __main__
 __main__.process_text = pt
 
