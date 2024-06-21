@@ -19,8 +19,8 @@ def load_model():
 def index():
     return render_template('home.html')
 
-def extract_text_from_url(url):
-    response = requests.get(url)
+def extract_text_from_url(link):
+    response = requests.get(link)
     soup = BeautifulSoup(response.content, 'html.parser')
     paragraphs = soup.find_all('p')
     text = ' '.join([para.get_text() for para in paragraphs])
@@ -29,10 +29,10 @@ def extract_text_from_url(url):
 @app.route('/result', methods=['POST'])
 def result():
     message = request.form.get('message')
-    url = request.form.get('url')
+    link = request.form.get('link')
     
-    if url:
-        message = extract_text_from_url(url)
+    if link:
+        message = extract_text_from_url(link)
     
     if not message:
         return jsonify({'error': 'No message or URL provided'}), 400
